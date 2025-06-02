@@ -52,7 +52,15 @@ if ingredients_list:
         st.success("Your Smoothie is ordered, " + name_on_order + "!", icon="✅")
 
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-st.text(smoothiefroot_response.json())
+
+if smoothiefroot_response.status_code == 200:
+    try:
+        st.text(smoothiefroot_response.json())
+    except Exception as e:
+        st.error("Could not parse JSON from the API response.")
+else:
+    st.error(f"API request failed with status code {smoothiefroot_response.status_code}")
+
 
 
 
