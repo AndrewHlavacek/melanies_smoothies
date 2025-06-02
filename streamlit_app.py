@@ -37,13 +37,10 @@ if ingredients_list:
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
     
-    # st.write(ingredients_string)
 
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients, name_on_order)
             values ('""" + ingredients_string + """','""" + name_on_order + """')"""
-    #st.write(my_insert_stmt)
 
-    # st.write(my_insert_stmt)
     time_to_insert = st.button('Submit Order')
 
     if time_to_insert:
@@ -55,7 +52,6 @@ smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/wa
 
 if smoothiefroot_response.status_code == 200:
     try:
-        #st.text(smoothiefroot_response.json())
         sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width = True)
     except Exception as e:
         st.error("Could not parse JSON from the API response.")
