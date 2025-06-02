@@ -19,7 +19,7 @@ st.write('The name on your Smoothie will be:', name_on_order)
 connection_parameters = st.secrets["connections"]["snowflake"]
 session = Session.builder.configs(connection_parameters).create()
 
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'), col('SEARCH_ON')
+my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'), col('SEARCH_ON'))
 #st.dataframe(data=my_dataframe, use_container_width=True)
 #st.stop()
 
